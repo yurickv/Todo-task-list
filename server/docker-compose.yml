@@ -4,12 +4,12 @@ services:
     image: postgres:13
     container_name: postgres_db
     ports:
-      - '5438:5432'
+      - '5432:5432'
     environment:
       POSTGRES_DB: task
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: polk452
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-volumes:
-  postgres_data:
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data
+# volumes:
+#   postgres_data:
