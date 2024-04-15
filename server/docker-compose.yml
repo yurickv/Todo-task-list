@@ -9,7 +9,7 @@ services:
       POSTGRES_DB: task
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: polk452
-#     volumes:
-#       - postgres_data:/var/lib/postgresql/data
-# volumes:
-#   postgres_data:
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:
