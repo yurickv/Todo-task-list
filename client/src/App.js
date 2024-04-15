@@ -26,7 +26,7 @@ function App() {
         setIsLoading(true);
 
         const fetchedTasks = await getAllTasks(controller);
-
+        // console.log(fetchedTasks);
         setTasksList(sortTasks(fetchedTasks.data));
       } catch (error) {
         setError(error.message);

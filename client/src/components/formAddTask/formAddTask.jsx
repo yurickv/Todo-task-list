@@ -6,7 +6,7 @@ export const FormAddTask = ({ newBike }) => {
   const handleSubmit = ({ title, description, status }, { resetForm }) => {
     newBike({
       title: title,
-      status: `${Planned}`,
+      status: status,
       description: description,
     });
     resetForm();
@@ -20,7 +20,7 @@ export const FormAddTask = ({ newBike }) => {
     <Formik
       initialValues={{
         title: "",
-        // status: "",
+        status: "Planned", // Default status
         description: "",
       }}
       onSubmit={handleSubmit}
@@ -37,16 +37,18 @@ export const FormAddTask = ({ newBike }) => {
             title="Title may contain only letters, apostrophe, dash and spaces."
             required
           />
-          {/* <Field
+          <select
             className="input"
-            type="text"
-            name="type"
-            minLength="5"
-            maxLength="25"
-            placeholder="Type"
+            name="status"
             title="Type may contain only letters, apostrophe, dash and spaces."
             required
-          /> */}
+            onChange={formik.handleChange}
+            value={formik.values.status}
+          >
+            <option value="Planned">Planned</option>
+            <option value="InProgress">InProgress</option>
+            <option value="Done">Done</option>
+          </select>
           <Field
             as="textarea"
             className="input-descrition"

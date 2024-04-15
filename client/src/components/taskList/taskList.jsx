@@ -5,9 +5,9 @@ import { getBgColor } from "../../helpers/changeColor";
 export const TasksList = ({ tasks, deleteTasks, updateTask }) => {
   return (
     <ul className="task-list">
-      {tasks.map(({ title, description, status }) => (
+      {tasks.map(({ title, description, status, id }) => (
         <li
-          key={_id}
+          key={id}
           className="task-item"
           style={{ borderColor: getBgColor(status) }}
           disabled={status === "Unavailable"}
@@ -24,7 +24,7 @@ export const TasksList = ({ tasks, deleteTasks, updateTask }) => {
                 name="status"
                 value={status}
                 onChange={(e) =>
-                  updateTask(_id, {
+                  updateTask(id, {
                     title: title,
                     description: description,
                     status: e.target.value,
@@ -40,7 +40,7 @@ export const TasksList = ({ tasks, deleteTasks, updateTask }) => {
           <div className="price-block">
             <button
               type="button"
-              onClick={() => deleteTasks(_id)}
+              onClick={() => deleteTasks(id)}
               className="button-delete"
             >
               X{/* <IoCloseSharp /> */}

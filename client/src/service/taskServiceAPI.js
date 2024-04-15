@@ -1,12 +1,13 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://localhost:5000";
+axios.defaults.baseURL = "http://localhost:5000/";
 
 export const getAllTasks = async (controller) => {
   try {
     const { data } = await axios.get(`/`, {
       signal: controller.signal,
     });
+    console.log(data);
     return data;
   } catch (error) {
     console.error("Помилка при отриманні даних:", error);
