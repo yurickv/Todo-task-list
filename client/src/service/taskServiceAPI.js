@@ -4,11 +4,11 @@ axios.defaults.baseURL = "http://localhost:5000/";
 
 export const getAllTasks = async (controller) => {
   try {
-    const { data } = await axios.get(`/`, {
+    const result = await axios.get(`/`, {
       signal: controller.signal,
     });
-    console.log(data);
-    return data;
+    console.log(result);
+    return result;
   } catch (error) {
     console.error("Помилка при отриманні даних:", error);
   }
@@ -25,9 +25,9 @@ export const deleteTask = async (controller, id) => {
   }
 };
 
-export const changeTask = async (controller, _id, updateTask) => {
+export const changeTask = async (controller, id, updateTask) => {
   try {
-    const { data } = await axios.put(`/${_id}`, updateTask, {
+    const { data } = await axios.patch(`/${id}`, updateTask, {
       signal: controller.signal,
     });
     return data;

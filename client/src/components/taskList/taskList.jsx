@@ -15,27 +15,27 @@ export const TasksList = ({ tasks, deleteTasks, updateTask }) => {
           <div className="info-block">
             <div className="task-name">
               <h3 className="task-title">{title}</h3>{" "}
-              <p className="task-type">&nbsp;- {description}&nbsp;</p>
+              <p className="task-type">&nbsp;- {description}&nbsp;</p>{" "}
+              <label className="task-status">
+                STATUS:{" "}
+                <select
+                  className="select-status"
+                  name="status"
+                  value={status}
+                  onChange={(e) =>
+                    updateTask(id, {
+                      title: title,
+                      description: description,
+                      status: e.target.value,
+                    })
+                  }
+                >
+                  <option value="Planned">Planned</option>
+                  <option value="InProgress">InProgress</option>
+                  <option value="Done">Done</option>
+                </select>
+              </label>
             </div>
-            <label className="task-status">
-              STATUS:{" "}
-              <select
-                className="select-status"
-                name="status"
-                value={status}
-                onChange={(e) =>
-                  updateTask(id, {
-                    title: title,
-                    description: description,
-                    status: e.target.value,
-                  })
-                }
-              >
-                <option value="Planned">Planned</option>
-                <option value="InProgress">InProgress</option>
-                <option value="Done">Done</option>
-              </select>
-            </label>
           </div>
           <div className="price-block">
             <button

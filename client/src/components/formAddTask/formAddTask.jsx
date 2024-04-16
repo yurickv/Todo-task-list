@@ -2,9 +2,9 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import "./addTask.css";
 
-export const FormAddTask = ({ newBike }) => {
+export const FormAddTask = ({ newTask }) => {
   const handleSubmit = ({ title, description, status }, { resetForm }) => {
-    newBike({
+    newTask({
       title: title,
       status: status,
       description: description,

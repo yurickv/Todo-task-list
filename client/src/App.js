@@ -1,7 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { Loader } from "./components/loader/loader";
-// import { useFetchBikes } from "./hooks/useFetchBikes";
 import { TasksList } from "./components/taskList/taskList";
 import { FormAddTask } from "./components/formAddTask/formAddTask";
 import {
@@ -13,8 +12,6 @@ import {
 import sortTasks from "./helpers/sortTasksList";
 
 function App() {
-  // const { tasksList, isLoading, error, deleteTasks } = useFetchTasks();
-
   const [tasksList, setTasksList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -63,10 +60,10 @@ function App() {
       controller.abort();
     }
   };
-  const updateTask = async (_id, newStatusTask) => {
+  const updateTask = async (id, newStatusTask) => {
     const controller = new AbortController();
     try {
-      const updatedTask = await changeTask(controller, _id, newStatusTask);
+      const updatedTask = await changeTask(controller, id, newStatusTask);
       if (updatedTask) {
         // setTasksList((prev) =>
         //   prev.map((Task) =>
@@ -87,14 +84,6 @@ function App() {
     }
   };
   const newTask = async (newTask) => {
-    const existingTask = tasksList.find(
-      (Task) => Task.number === newTask.number
-    );
-    if (existingTask) {
-      alert(`Task with ID ${newTask.number} already exists.`);
-      return;
-    }
-
     const controller = new AbortController();
     try {
       const addedNewTask = await addTask(controller, newTask);
@@ -130,6 +119,7 @@ function App() {
             )}
           </div>
           <div className="task-service-div">
+            <h3>Add new task</h3>
             <FormAddTask newTask={newTask} />
           </div>
         </section>
